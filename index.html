@@ -17,7 +17,6 @@
         }
         body { background: var(--main-bg); color: var(--dark); font-family: "Hiragino Mincho ProN", "Source Han Serif SC", serif; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* 导航栏 - 增加移动端内边距适配 */
         nav { backdrop-filter: blur(20px); background: rgba(253, 252, 251, 0.7); z-index: 1000; }
         .nav-link { display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
         .nav-link .en { font-size: 11px; letter-spacing: 0.2em; font-weight: bold; }
@@ -66,7 +65,6 @@
         .view-btn { opacity: 0; transform: translateY(20px); color: white; border: 1px solid white; padding: 10px 25px; font-size: 12px; letter-spacing: 0.3em; transition: all 0.4s ease; }
         .work-card:hover .view-btn { opacity: 1; transform: translateY(0); }
         
-        /* 强制图片在移动端不白屏 */
         img { content-visibility: auto; }
     </style>
 </head>
@@ -154,24 +152,14 @@
 
     <section id="indoor" class="py-24 px-5 md:px-10 bg-[#F5F3F0]">
         <p class="section-tag">03 / Interior Design <span>室内空间表现</span></p>
-        <div class="waterfall">
-            <script>
-                for(let i=1; i<=37; i++) {
-                    document.write(`<div class="img-card"><img src="./images/in%20(${i}).jpg"></div>`);
-                }
-            </script>
-        </div>
+        <div class="waterfall" id="indoor-box">
+            </div>
     </section>
 
     <section id="outdoor" class="py-24 px-5 md:px-10">
         <p class="section-tag">04 / Landscape & Exterior <span>室外景观规划</span></p>
-        <div class="waterfall">
-            <script>
-                for(let i=1; i<=43; i++) {
-                    document.write(`<div class="img-card"><img src="./images/out%20(${i}).jpg"></div>`);
-                }
-            </script>
-        </div>
+        <div class="waterfall" id="outdoor-box">
+            </div>
     </section>
 
     <section id="tech" class="py-24 px-5 md:px-10 bg-[#FAF9F7]">
@@ -207,16 +195,26 @@
         });
 
         function openPDF(path) {
-            // 解决手机端文件名含空格无法识别的问题
             const cleanPath = path.replace(/ /g, '%20');
             window.location.href = cleanPath; 
         }
 
         window.onload = function() {
-            // 批量修复所有含空格和括号的资源路径
+            // 解决核心问题：用 innerHTML 代替 document.write，防止手机端拦截
+            let indoorHtml = '';
+            for(let i=1; i<=37; i++) {
+                indoorHtml += `<div class="img-card"><img src="./images/in%20(${i}).jpg" loading="lazy"></div>`;
+            }
+            document.getElementById('indoor-box').innerHTML = indoorHtml;
+
+            let outdoorHtml = '';
+            for(let i=1; i<=43; i++) {
+                outdoorHtml += `<div class="img-card"><img src="./images/out%20(${i}).jpg" loading="lazy"></div>`;
+            }
+            document.getElementById('outdoor-box').innerHTML = outdoorHtml;
+
+            // 批量修复路径与报错
             document.querySelectorAll('img').forEach(img => {
-                let src = img.getAttribute('src');
-                if (src) img.src = src.replace(/ /g, '%20');
                 img.onerror = function() {
                     if (this.src.endsWith('.jpg')) {
                         this.src = this.src.replace('.jpg', '.png');
