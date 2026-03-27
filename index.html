@@ -16,47 +16,29 @@
             --brown: #3D2B1F; 
         }
         body { background: var(--main-bg); color: var(--dark); font-family: "Hiragino Mincho ProN", "Source Han Serif SC", serif; scroll-behavior: smooth; overflow-x: hidden; }
-        
         nav { backdrop-filter: blur(20px); background: rgba(253, 252, 251, 0.7); z-index: 1000; }
         .nav-link { display: flex; flex-direction: column; align-items: center; transition: all 0.3s ease; }
         .nav-link .en { font-size: 11px; letter-spacing: 0.2em; font-weight: bold; }
         .nav-link .zh { font-size: 10px; margin-top: 2px; opacity: 0.7; letter-spacing: 0.1em; }
         .nav-link:hover { color: var(--gold); }
-
         .brand-logo-top { display: flex; flex-direction: column; line-height: 1.2; border-left: 1px solid var(--brown); padding-left: 10px; }
         .brand-logo-top .zh { font-size: 1.1rem; font-weight: 300; letter-spacing: 0.3em; color: var(--brown); }
         .brand-logo-top .en { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown); opacity: 0.8; }
-
         .hero-brand-center { text-align: center; padding: 120px 0 30px 0; }
         .hero-zh { font-size: 4.8rem; font-weight: 200; color: var(--brown); letter-spacing: 1.2rem; margin-bottom: 0.5rem; }
         .hero-en { font-size: 1.1rem; color: var(--brown); letter-spacing: 0.8rem; text-transform: uppercase; opacity: 0.5; }
-
         .swiper { width: 100%; padding: 40px 0 100px 0; }
-        .swiper-slide { 
-            width: 400px; 
-            height: 500px; 
-            max-width: 85vw; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border-radius: 4px; 
-            overflow: hidden; 
-            background: #eee;
-            display: flex;
-            justify-content: center;
-        }
+        .swiper-slide { width: 400px; height: 500px; max-width: 85vw; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 4px; overflow: hidden; background: #eee; display: flex; justify-content: center; }
         .swiper-slide img { height: 100%; width: auto; object-fit: contain; display: block; }
-
         .waterfall { column-count: 1; column-gap: 1.5rem; }
         @media (min-width: 768px) { .waterfall { column-count: 2; } }
         @media (min-width: 1024px) { .waterfall { column-count: 3; } }
         .img-card { break-inside: avoid; margin-bottom: 2rem; background: white; padding: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .img-card img { width: 100%; height: auto; display: block; }
-        
         .v-box { background: #000; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 8px; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         video { width: 100%; height: 100%; object-fit: contain; display: block; }
-        
         .section-tag { font-size: 14px; font-weight: bold; color: var(--gold); letter-spacing: 0.4em; border-left: 4px solid var(--gold); padding-left: 20px; margin-bottom: 3.5rem; text-transform: uppercase; }
         .section-tag span { color: var(--dark); margin-left: 10px; font-size: 18px; letter-spacing: 0.1em; }
-
         .work-card { position: relative; overflow: hidden; border-radius: 4px; transition: all 0.5s ease; cursor: pointer; background: #fff; border: 1px solid #f0f0f0; }
         .work-card img { width: 100%; height: 450px; object-fit: contain; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .work-card:hover img { transform: scale(1.03); }
@@ -64,17 +46,11 @@
         .work-card:hover .work-mask { background: rgba(61, 43, 31, 0.85); backdrop-filter: blur(4px); }
         .view-btn { opacity: 0; transform: translateY(20px); color: white; border: 1px solid white; padding: 10px 25px; font-size: 12px; letter-spacing: 0.3em; transition: all 0.4s ease; }
         .work-card:hover .view-btn { opacity: 1; transform: translateY(0); }
-        
-        img { content-visibility: auto; }
     </style>
 </head>
 <body>
-
     <nav class="fixed w-full px-5 md:px-10 py-5 flex justify-between items-center border-b border-gray-100">
-        <div class="brand-logo-top">
-            <span class="zh">音之屿</span>
-            <span class="en">Isle of Tone</span>
-        </div>
+        <div class="brand-logo-top"><span class="zh">音之屿</span><span class="en">Isle of Tone</span></div>
         <div class="hidden md:flex space-x-10 text-gray-400 uppercase">
             <a href="#featured" class="nav-link"><span class="en">Featured</span><span class="zh">精选项目</span></a>
             <a href="#works" class="nav-link"><span class="en">Works</span><span class="zh">作品索引</span></a>
@@ -110,34 +86,13 @@
     <section id="works" class="py-24 px-5 md:px-10 bg-[#FAF9F7]">
         <p class="section-tag">01 / DESIGN PORTFOLIOS <span>作品集目录索引</span></p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            <div class="work-card" onclick="openPDF('./portfolio/work1.pdf')">
-                <img src="./images/cover1.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 01</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work2.pdf')">
-                <img src="./images/cover2.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 02</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work3.pdf')">
-                <img src="./images/cover3.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 03</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work4.pdf')">
-                <img src="./images/cover4.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 04</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work5.pdf')">
-                <img src="./images/cover5.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 05</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work6.pdf')">
-                <img src="./images/cover6.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 06</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
-            <div class="work-card" onclick="openPDF('./portfolio/work7.pdf')">
-                <img src="./images/cover7.jpg">
-                <div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 07</p><span class="view-btn">VIEW FULL PDF</span></div></div>
-            </div>
+            <div class="work-card" onclick="openPDF('./portfolio/work1.pdf')"><img src="./images/cover1.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 01</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work2.pdf')"><img src="./images/cover2.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 02</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work3.pdf')"><img src="./images/cover3.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 03</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work4.pdf')"><img src="./images/cover4.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 04</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work5.pdf')"><img src="./images/cover5.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 05</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work6.pdf')"><img src="./images/cover6.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 06</p><span class="view-btn">查看完整 PDF</span></div></div></div>
+            <div class="work-card" onclick="openPDF('./portfolio/work7.pdf')"><img src="./images/cover7.jpg"><div class="work-mask"><div class="text-center"><p class="text-white text-lg tracking-widest mb-4">PORTFOLIO 07</p><span class="view-btn">查看完整 PDF</span></div></div></div>
         </div>
     </section>
 
@@ -152,11 +107,11 @@
 
     <section id="indoor" class="py-24 px-5 md:px-10 bg-[#F5F3F0]">
         <p class="section-tag">03 / Interior Design <span>室内空间表现</span></p>
-        <div class="waterfall">
+        <div id="indoor-waterfall" class="waterfall">
             <script>
-                // 100% 保留您的循环想法，仅升级写入方式以兼容手机
+                // 保留您的循环想法，仅改用最稳妥的 ID 定位方式
                 for(var i=1; i<=37; i++) {
-                    document.currentScript.insertAdjacentHTML('beforebegin', '<div class="img-card"><img src="./images/in%20(' + i + ').jpg"></div>');
+                    document.getElementById('indoor-waterfall').insertAdjacentHTML('beforeend', '<div class="img-card"><img src="./images/in%20(' + i + ').jpg"></div>');
                 }
             </script>
         </div>
@@ -164,11 +119,10 @@
 
     <section id="outdoor" class="py-24 px-5 md:px-10">
         <p class="section-tag">04 / Landscape & Exterior <span>室外景观规划</span></p>
-        <div class="waterfall">
+        <div id="outdoor-waterfall" class="waterfall">
             <script>
-                // 100% 保留您的循环想法，仅升级写入方式以兼容手机
                 for(var i=1; i<=43; i++) {
-                    document.currentScript.insertAdjacentHTML('beforebegin', '<div class="img-card"><img src="./images/out%20(' + i + ').jpg"></div>');
+                    document.getElementById('outdoor-waterfall').insertAdjacentHTML('beforeend', '<div class="img-card"><img src="./images/out%20(' + i + ').jpg"></div>');
                 }
             </script>
         </div>
@@ -191,26 +145,23 @@
     <section id="about" class="py-48 bg-[#1A1A1A] text-white text-center">
         <h2 class="text-4xl md:text-6xl font-thin tracking-[0.2em] mb-12">张音慧</h2>
         <p class="text-gray-400 mb-20 italic text-lg tracking-[0.1em]">美丽而坚韧，仔细而敏锐。</p>
-        <a href="./resume.pdf" target="_blank" class="inline-block px-14 py-5 border border-[#B4926C] text-[#B4926C] text-[12px] tracking-[0.6em] hover:bg-[#B4926C] hover:text-white transition-all uppercase">DOWNLOAD RESUME / 查看简历</a>
+        <a href="./resume.pdf" target="_blank" class="inline-block px-14 py-5 border border-[#B4926C] text-[#B4926C] text-[12px] tracking-[0.6em] hover:bg-[#B4926C] hover:text-white transition-all uppercase">下载简历 / 查看简历</a>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            loop: true,
+            grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true,
             autoplay: { delay: 3000, disableOnInteraction: false },
             coverflowEffect: { rotate: 20, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
         });
 
-        function openPDF(path) {
+        function openPDF(path) { 
             window.location.href = path.replace(/ /g, '%20'); 
         }
 
-        // 容错处理：当图片路径因为空格或格式问题报错时，自动修正
+        // 核心修复：确保图片加载稳定
         window.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('img').forEach(img => {
                 img.onerror = function() {
