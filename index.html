@@ -152,14 +152,26 @@
 
     <section id="indoor" class="py-24 px-5 md:px-10 bg-[#F5F3F0]">
         <p class="section-tag">03 / Interior Design <span>室内空间表现</span></p>
-        <div class="waterfall" id="indoor-box">
-            </div>
+        <div class="waterfall">
+            <script>
+                // 100% 保留您的循环想法，仅升级写入方式以兼容手机
+                for(var i=1; i<=37; i++) {
+                    document.currentScript.insertAdjacentHTML('beforebegin', '<div class="img-card"><img src="./images/in%20(' + i + ').jpg"></div>');
+                }
+            </script>
+        </div>
     </section>
 
     <section id="outdoor" class="py-24 px-5 md:px-10">
         <p class="section-tag">04 / Landscape & Exterior <span>室外景观规划</span></p>
-        <div class="waterfall" id="outdoor-box">
-            </div>
+        <div class="waterfall">
+            <script>
+                // 100% 保留您的循环想法，仅升级写入方式以兼容手机
+                for(var i=1; i<=43; i++) {
+                    document.currentScript.insertAdjacentHTML('beforebegin', '<div class="img-card"><img src="./images/out%20(' + i + ').jpg"></div>');
+                }
+            </script>
+        </div>
     </section>
 
     <section id="tech" class="py-24 px-5 md:px-10 bg-[#FAF9F7]">
@@ -195,44 +207,19 @@
         });
 
         function openPDF(path) {
-            const cleanPath = path.replace(/ /g, '%20');
-            window.location.href = cleanPath; 
+            window.location.href = path.replace(/ /g, '%20'); 
         }
 
-        window.onload = function() {
-            // 解决核心问题：用 innerHTML 代替 document.write，防止手机端拦截
-            let indoorHtml = '';
-            for(let i=1; i<=37; i++) {
-                indoorHtml += `<div class="img-card"><img src="./images/in%20(${i}).jpg" loading="lazy"></div>`;
-            }
-            document.getElementById('indoor-box').innerHTML = indoorHtml;
-
-            let outdoorHtml = '';
-            for(let i=1; i<=43; i++) {
-                outdoorHtml += `<div class="img-card"><img src="./images/out%20(${i}).jpg" loading="lazy"></div>`;
-            }
-            document.getElementById('outdoor-box').innerHTML = outdoorHtml;
-
-            // 批量修复路径与报错
+        // 容错处理：当图片路径因为空格或格式问题报错时，自动修正
+        window.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('img').forEach(img => {
                 img.onerror = function() {
-                    if (this.src.endsWith('.jpg')) {
-                        this.src = this.src.replace('.jpg', '.png');
-                    } else if (this.src.endsWith('.png')) {
-                        this.src = this.src.replace('.png', '.jpg');
-                    }
+                    if (this.src.endsWith('.jpg')) this.src = this.src.replace('.jpg', '.png');
+                    else if (this.src.endsWith('.png')) this.src = this.src.replace('.png', '.jpg');
                     this.onerror = null; 
                 };
             });
-
-            document.querySelectorAll('video').forEach(video => {
-                let source = video.querySelector('source');
-                if (source) {
-                    source.src = source.getAttribute('src').replace(/ /g, '%20');
-                    video.load();
-                }
-            });
-        };
+        });
     </script>
 </body>
 </html>
